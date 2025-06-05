@@ -1,0 +1,18 @@
+package az.sense.rasimkafesi.services;
+
+import az.sense.rasimkafesi.dtos.workerDtos.WorkerCreateDto;
+import az.sense.rasimkafesi.dtos.workerDtos.WorkerDto;
+import az.sense.rasimkafesi.dtos.workerDtos.WorkerUpdateDto;
+
+import java.util.List;
+
+public interface WorkerService {
+    List<WorkerDto> getAllWorkers();
+    WorkerDto getWorkerById(Long id);
+    boolean createWorker(WorkerCreateDto workerCreateDto);
+    boolean updateWorker(WorkerUpdateDto workerUpdateDto,Long id);
+    boolean deleteWorker(Long id);
+    WorkerUpdateDto findWorkerById(Long id);
+
+
+}
