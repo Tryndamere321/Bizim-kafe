@@ -35,30 +35,34 @@
 <body>
 
 <section layout:fragment="layout">
-    <form class="container" method="post" id="mealUpdateDto" enctype="multipart/form-data">
+    <form class="container" method="post" id="workerUpdateDto" enctype="multipart/form-data">
         <!--        <input type="hidden"-->
         <!--               th:name="${_csrf.parameterName}"-->
         <!--               th:value="${_csrf.token}" />-->
-        <h2>Yemek Yenilənməsi</h2>
+        <h2>Isci Yenilənməsi</h2>
         <div class="row">
             <div class="col-lg-8">
                 <!-- Name Field -->
                 <div class="form-floating mb-3">
-                    <input th:field="*{mealUpdateDto.name}" class="form-control" id="name" type="text" placeholder="yemek  adı" required/>
-                    <div th:if="${#fields.hasErrors('mealUpdateDto.name')}" th:errors="*{mealUpdateDto.name}" class="text-danger">yemek adı tələb olunur</div>
+                    <input th:field="*{workerUpdateDto.name}" class="form-control" id="name" type="text" placeholder=" ad" required/>
+                    <div th:if="${#fields.hasErrors('workerUpdateDto.name')}" th:errors="*{workerUpdateDto.name}" class="text-danger"> ad tələb olunur</div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input th:field="*{workerUpdateDto.surname}" class="form-control" id="surname" type="text" placeholder=" soyad" required/>
+                    <div th:if="${#fields.hasErrors('workerUpdateDto.surname')}" th:errors="*{workerUpdateDto.surname}" class="text-danger"> soyad tələb olunur</div>
                 </div>
 
 
                 <div class="form-floating mb-3">
-                    <textarea th:field="*{mealUpdateDto.description}" class="form-control" id="description" placeholder="Enter description" minlength="10" required></textarea>
-                    <div th:if="${#fields.hasErrors('mealUpdateDto.description')}" th:errors="*{mealUpdateDto.description}" class="text-danger">
+                    <textarea th:field="*{workerUpdateDto.information}" class="form-control" id="information" placeholder="Enter information" minlength="10" required></textarea>
+                    <div th:if="${#fields.hasErrors('workerUpdateDto.information')}" th:errors="*{workerUpdateDto.information}" class="text-danger">
                         Təsvir ən az 10 simvoldan ibarət olmalıdır
                     </div>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input th:field="*{mealUpdateDto.price}" class="form-control" id="price" type="text" placeholder="yemek  qiymeti" required/>
-                    <div th:if="${#fields.hasErrors('mealUpdateDto.price')}" th:errors="*{mealUpdateDto.price}" class="text-danger">yemek qiymeti tələb olunur</div>
+                    <input th:field="*{workerUpdateDto.position}" class="form-control" id="position" type="text" placeholder="pozisiya" required/>
+                    <div th:if="${#fields.hasErrors('workerUpdateDto.position')}" th:errors="*{workerUpdateDto.position}" class="text-danger">pozisiya tələb olunur</div>
                 </div>
 
 
@@ -67,8 +71,8 @@
                     <!-- Photo URL Field -->
                     <div class="form-floating mb-3">
                         <!-- Hidden input for photoUrl -->
-                        <input th:field="*{mealUpdateDto.photoUrl}" class="form-control" id="photoUrl" type="hidden" placeholder="Enter photo URL" required />
-                        <div th:if="${#fields.hasErrors('mealUpdateDto.photoUrl')}" th:errors="*{mealUpdateDto.photoUrl}" class="text-danger">Şəkil tələb olunur</div>
+                        <input th:field="*{workerUpdateDto.photoUrl}" class="form-control" id="photoUrl" type="hidden" placeholder="Enter photo URL" required />
+                        <div th:if="${#fields.hasErrors('workerUpdateDto.photoUrl')}" th:errors="*{workerUpdateDto.photoUrl}" class="text-danger">Şəkil tələb olunur</div>
 
                         <!-- Custom File Upload Button -->
                         <label for="imageInput" class="custom-file-upload">
@@ -77,7 +81,7 @@
                         <input type="file" name="image" id="imageInput" style="display: none;" onchange="document.getElementById('fileName').textContent = this.files[0] ? this.files[0].name : 'No file selected'" />
 
                         <!-- File name display -->
-                        <div th:text="${mealUpdateDto.photoUrl}" id="fileName" style="color: #666; font-size: 14px; margin-top: 8px;">Fayl seçilməyib</div>
+                        <div th:text="${workerUpdateDto.photoUrl}" id="fileName" style="color: #666; font-size: 14px; margin-top: 8px;">Fayl seçilməyib</div>
                     </div>
                 </div>
 

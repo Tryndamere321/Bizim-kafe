@@ -8,4 +8,5 @@ public class MealCreateDto {
     private String description;
     private String photoUrl;
     private Double price;
+    private Long categoryId;
 }

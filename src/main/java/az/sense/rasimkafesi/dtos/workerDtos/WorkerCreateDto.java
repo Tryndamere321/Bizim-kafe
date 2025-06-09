@@ -8,4 +8,6 @@ public class WorkerCreateDto {
     private String surname;
     private String position;
     private String information;
+    private String photoUrl;
+
 }

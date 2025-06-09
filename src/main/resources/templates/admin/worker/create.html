@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{admin/layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Terapevt</title>
+
+    <style>
+        .custom-file-upload {
+            display: inline-flex;
+            align-items: center;
+            background-color: #007bff;  /* Blue button */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .custom-file-upload i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        #fileName {
+            color: #666;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<section layout:fragment="layout">
+    <form class="container" method="post" th:object="${workerCreateDto}" id="workerCreateDto" enctype="multipart/form-data">
+        <!--                <input type="hidden"-->
+        <!--                       th:name="${_csrf.parameterName}"-->
+        <!--                       th:value="${_csrf.token}" />-->
+        <h2>Yeni blog yarat</h2>
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Name Field -->
+                <div class="form-floating mb-3">
+                    <input th:field="*{name}" class="form-control" id="name" type="text" placeholder="Ad əlavə et" required/>
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">basliq tələb olunur</div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input th:field="*{surname}" class="form-control" id="surname" type="text" placeholder="Soyad əlavə et" required/>
+                    <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="text-danger">basliq tələb olunur</div>
+                </div>
+
+
+                <div class="form-floating mb-3">
+                    <textarea th:field="*{information}" class="form-control" id="information" placeholder="Qısa təsvir daxil edin..." minlength="10" maxlength="1000" required></textarea>
+                    <div th:if="${#fields.hasErrors('information')}" th:errors="*{information}" class="text-danger">
+                        Təsvir minimum 10, maksimum 1000 simvoldan ibarət olmalıdır.
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input th:field="*{position}" class="form-control" id="position" type="text" placeholder="position əlavə et" required/>
+                    <div th:if="${#fields.hasErrors('position')}" th:errors="*{position}" class="text-danger">basliq tələb olunur</div>
+                </div>
+
+
+                <div class="col-lg-4">
+                    <!-- Photo URL Field -->
+                    <div class="form-floating mb-3">
+                        <!-- Hidden input for photoUrl -->
+                        <input th:field="*{photoUrl}" class="form-control" id="photoUrl" type="hidden" placeholder="Enter photo URL" required />
+                        <div th:if="${#fields.hasErrors('photoUrl')}" th:errors="*{photoUrl}" class="text-danger">Foto tələb olunur</div>
+
+                        <!-- Custom File Upload Button -->
+                        <label for="imageInput" class="custom-file-upload">
+                            <i class="fas fa-upload"></i>Fayl seç
+                        </label>
+                        <input type="file" name="image" id="imageInput" style="display: none;" onchange="document.getElementById('fileName').textContent = this.files[0] ? this.files[0].name : 'No file selected'" />
+
+                        <!-- File name display -->
+                        <div id="fileName" style="color: #666; font-size: 14px; margin-top: 8px;">Fayl seçilməyib</div>
+                    </div>
+                </div>
+
+
+                <!-- Submit Button -->
+                <input type="submit" class="btn btn-success my-3" value="Hazırdır">
+            </div>
+
+        </div>
+
+    </form>
+</section>
+
+
+</body>
+</html>

@@ -3,16 +3,18 @@ package az.sense.rasimkafesi.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name = "workers")
 @Data
-public class Worker {
+@Table(name = "categories")
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String surname;
-    private String position;
-    private String photoUrl;
-    private String information;
+
+    @OneToMany(mappedBy = "category")
+    private List<Meal> meals = new ArrayList<>();
 }

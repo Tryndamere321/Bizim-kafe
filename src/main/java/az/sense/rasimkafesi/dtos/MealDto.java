@@ -1,5 +1,6 @@
 package az.sense.rasimkafesi.dtos;
 
+import az.sense.rasimkafesi.dtos.categoryDtos.CategoryDto;
 import lombok.Data;
 
 @Data
@@ -9,4 +10,5 @@ public class MealDto {
     private String description;
     private String photoUrl;
     private Double price;
+    private CategoryDto category;
 }

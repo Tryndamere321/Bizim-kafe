@@ -9,4 +9,5 @@ public class MealUpdateDto {
     private String description;
     private String photoUrl;
     private Double price;
+    private Long categoryId;
 }

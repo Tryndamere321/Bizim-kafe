@@ -14,4 +14,6 @@ public class Meal {
     private String description;
     private String photoUrl;
     private Double price;
+    @ManyToOne
+    private Category category;
 }

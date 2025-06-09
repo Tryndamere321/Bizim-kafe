@@ -2,6 +2,7 @@ package az.sense.rasimkafesi.services.impls;
 
 import az.sense.rasimkafesi.dtos.MealCreateDto;
 import az.sense.rasimkafesi.dtos.MealDto;
+import az.sense.rasimkafesi.dtos.MealUpdateDto;
 import az.sense.rasimkafesi.models.Meal;
 import az.sense.rasimkafesi.repositories.MealRepository;
 import az.sense.rasimkafesi.services.MealService;
@@ -29,21 +30,21 @@ public class MealServiceImpl implements MealService {
 
     @Override
     public List<MealDto> getAllMeals() {
-        List<Meal> meals=mealRepository.findAll();
-        return meals.stream().map(x->modelMapper.map(x,MealDto.class)).toList();
+        List<Meal> meals = mealRepository.findAll();
+        return meals.stream().map(x -> modelMapper.map(x, MealDto.class)).toList();
     }
 
     @Override
     public boolean addMeal(MealCreateDto mealCreateDto, MultipartFile image) {
-        Meal findmeal=mealRepository.findMealByName(mealCreateDto.getName());
-        if(findmeal!=null) {
+        Meal findmeal = mealRepository.findMealByName(mealCreateDto.getName());
+        if (findmeal != null) {
             return false;
         }
         try {
             Map uploadResult = cloudinary.uploader().upload(image.getBytes(), ObjectUtils.emptyMap());
             String photoUrl = (String) uploadResult.get("url");
 
-            Meal meal=new Meal();
+            Meal meal = new Meal();
             meal.setPhotoUrl(photoUrl);
             meal.setName(mealCreateDto.getName());
             meal.setDescription(mealCreateDto.getDescription());
@@ -51,7 +52,7 @@ public class MealServiceImpl implements MealService {
             mealRepository.save(meal);
             return true;
 
-        }catch (IOException e){
+        } catch (IOException e) {
             return false;
         }
     }
@@ -59,5 +60,33 @@ public class MealServiceImpl implements MealService {
     @Override
     public void deleteMeal(Long id) {
         mealRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean updateMeal(MealUpdateDto mealUpdateDto, Long id, MultipartFile image) {
+        Meal findMeal = mealRepository.findById(id).orElseThrow();
+        try {
+            if (image.isEmpty()) {
+                findMeal.setPhotoUrl(mealUpdateDto.getPhotoUrl());
+            } else {
+                Map uploadResult = cloudinary.uploader().upload(image.getBytes(), ObjectUtils.emptyMap());
+                String photoUrl = (String) uploadResult.get("url");
+                findMeal.setPhotoUrl(photoUrl);
+            }
+
+            findMeal.setName(mealUpdateDto.getName());
+            findMeal.setPrice(mealUpdateDto.getPrice());
+            findMeal.setDescription(mealUpdateDto.getDescription());
+            mealRepository.save(findMeal);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public MealUpdateDto findUpdateMeal(Long id) {
+       Meal meal =mealRepository.findById(id).orElseThrow();
+       return modelMapper.map(meal,MealUpdateDto.class);
     }
 }

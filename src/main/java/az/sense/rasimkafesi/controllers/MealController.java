@@ -1,6 +1,7 @@
 package az.sense.rasimkafesi.controllers;
 
 import az.sense.rasimkafesi.dtos.MealCreateDto;
+import az.sense.rasimkafesi.dtos.MealUpdateDto;
 import az.sense.rasimkafesi.models.Meal;
 import az.sense.rasimkafesi.services.MealService;
 import org.springframework.stereotype.Controller;
@@ -38,5 +39,19 @@ public class MealController {
         mealService.deleteMeal(id);
         return "redirect:/admin/meal";
     }
+    @GetMapping("/admin/meal/update/{id}")
+    public String home(Model model,@PathVariable Long id){
+        model.addAttribute("mealUpdateDto",mealService.findUpdateMeal(id));
+        return "admin/meal/update";
+    }
+    @PostMapping("/admin/meal/update/{id}")
+    public String home(@PathVariable Long id, @ModelAttribute("mealUpdateDto")MealUpdateDto mealUpdateDto,MultipartFile image){
+     mealService.updateMeal(mealUpdateDto,id,image);
+     return "redirect:/admin/meal";
+    }
+
+
+
+
 
 }
