@@ -27,8 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
         if (findCategory != null) {
             return false;
         }
-        Category category = new Category();
-        category.setName(categoryCreateDto.getName());
+        Category category = modelMapper.map(categoryCreateDto, Category.class);
         categoryRepository.save(category);
         return true;
     }

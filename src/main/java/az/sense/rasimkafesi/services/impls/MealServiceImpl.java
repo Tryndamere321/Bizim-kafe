@@ -1,8 +1,8 @@
 package az.sense.rasimkafesi.services.impls;
 
-import az.sense.rasimkafesi.dtos.MealCreateDto;
-import az.sense.rasimkafesi.dtos.MealDto;
-import az.sense.rasimkafesi.dtos.MealUpdateDto;
+import az.sense.rasimkafesi.dtos.mealDtos.MealCreateDto;
+import az.sense.rasimkafesi.dtos.mealDtos.MealDto;
+import az.sense.rasimkafesi.dtos.mealDtos.MealUpdateDto;
 import az.sense.rasimkafesi.models.Meal;
 import az.sense.rasimkafesi.repositories.MealRepository;
 import az.sense.rasimkafesi.services.MealService;

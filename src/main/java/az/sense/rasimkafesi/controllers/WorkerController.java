@@ -1,6 +1,5 @@
 package az.sense.rasimkafesi.controllers;
 
-import az.sense.rasimkafesi.dtos.MealUpdateDto;
 import az.sense.rasimkafesi.dtos.workerDtos.WorkerCreateDto;
 import az.sense.rasimkafesi.dtos.workerDtos.WorkerUpdateDto;
 import az.sense.rasimkafesi.models.Worker;

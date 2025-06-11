@@ -1,4 +1,4 @@
-package az.sense.rasimkafesi.dtos;
+package az.sense.rasimkafesi.dtos.mealDtos;
 
 import lombok.Data;
 

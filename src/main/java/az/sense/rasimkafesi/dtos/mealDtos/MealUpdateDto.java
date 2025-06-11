@@ -1,14 +1,13 @@
-package az.sense.rasimkafesi.dtos;
+package az.sense.rasimkafesi.dtos.mealDtos;
 
-import az.sense.rasimkafesi.dtos.categoryDtos.CategoryDto;
 import lombok.Data;
 
 @Data
-public class MealDto {
+public class MealUpdateDto {
     private Long id;
     private String name;
     private String description;
     private String photoUrl;
     private Double price;
-    private CategoryDto category;
+    private Long categoryId;
 }

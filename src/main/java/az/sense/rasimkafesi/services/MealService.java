@@ -1,8 +1,8 @@
 package az.sense.rasimkafesi.services;
 
-import az.sense.rasimkafesi.dtos.MealCreateDto;
-import az.sense.rasimkafesi.dtos.MealDto;
-import az.sense.rasimkafesi.dtos.MealUpdateDto;
+import az.sense.rasimkafesi.dtos.mealDtos.MealCreateDto;
+import az.sense.rasimkafesi.dtos.mealDtos.MealDto;
+import az.sense.rasimkafesi.dtos.mealDtos.MealUpdateDto;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
